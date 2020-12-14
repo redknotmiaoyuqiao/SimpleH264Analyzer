@@ -28,3 +28,7 @@
 *.app
 /SimpleH264Analyzer/SimpleH264Analyzer.v12.suo
 /SimpleH264Analyzer/SimpleH264Analyzer.sdf
+
+
+.idea/
+cmake-build-debug/

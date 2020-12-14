@@ -9,39 +9,23 @@
 
 using namespace std;
 
-// ¹¹Ôìº¯Êý
-CStreamFile::CStreamFile(TCHAR *fileName)
+// ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
+CStreamFile::CStreamFile(const char * fileName)
 {
-	m_fileName = fileName;
+	// m_fileName = fileName;
 	m_sps = NULL;
 	m_pps = NULL;
 	m_IDRSlice = NULL;
 
 	file_info();
-	_tfopen_s(&m_inputFile, m_fileName, _T("rb"));
+    m_inputFile = fopen(fileName, "rb");
 	if (NULL ==  m_inputFile)
 	{
 		file_error(0);
 	}
-
-#if TRACE_CONFIG_LOGOUT
-	g_traceFile.open(L"trace.txt");
-	if (!g_traceFile.is_open())
-	{
-		file_error(1);
-	}
-#endif
-
-#if TRACE_CONFIG_TEMP_LOG
-	g_tempFile.open(L"temp.txt");
-	if (!g_tempFile.is_open())
-	{
-		file_error(1);
-	}
-#endif
 }
 
-//Îö¹¹º¯Êý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CStreamFile::~CStreamFile()
 {
 	if (m_inputFile)
@@ -79,10 +63,7 @@ CStreamFile::~CStreamFile()
 
 void CStreamFile::file_info()
 {
-	if (m_fileName)
-	{
-		wcout << L"File name :" << m_fileName << endl;
-	}
+
 }
 
 void CStreamFile::file_error(int idx)
@@ -108,7 +89,7 @@ int CStreamFile::Parse_h264_bitstream()
 	do 
 	{
 		ret = find_nal_prefix();
-		//½âÎöNAL UNIT
+		//ï¿½ï¿½ï¿½ï¿½NAL UNIT
 		if (m_nalVec.size())
 		{
 			UINT8 nalType = m_nalVec[0] & 0x1F;

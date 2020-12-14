@@ -2,6 +2,7 @@
 #define _STREAM_H_
 
 #include <vector>
+#include "Global.h"
 
 class CSeqParamSet;
 class CPicParamSet;
@@ -10,7 +11,7 @@ class CSliceStruct;
 class CStreamFile
 {
 public:
-	CStreamFile(TCHAR *fileName);
+	CStreamFile(const char * fileName);
 	~CStreamFile();
 
 	//Open API
@@ -19,7 +20,7 @@ public:
 
 private:
 	FILE	*m_inputFile;
-	TCHAR	*m_fileName;
+	// char	*m_fileName;
 	std::vector<UINT8> m_nalVec;
 	
 	void	file_info();

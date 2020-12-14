@@ -1,12 +1,12 @@
-// SimpleH264Analyzer.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// SimpleH264Analyzer.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
 #include "Stream.h"
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char * argv[])
 {	
-	CStreamFile h264stream(argv[1]);
+	CStreamFile h264stream("/Users/lichi/EyerWand/EyerLib/Lib/EyerAVCTest/demo_video_176x144_baseline.h264");
 
 	h264stream.Parse_h264_bitstream();
 
